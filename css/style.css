@@ -1,0 +1,144 @@
+/* Import Normalize.css */
+@import url('normalize.css');
+
+/* Define CSS Variables */
+:root {
+  /* Text Colors */
+  --text-primary: #333; /* Primary text color */
+  --text-button: #fff; /* Button text color */
+
+  /* Base Styling */
+  --background: #f4f4f4; /* Background color for body */
+  --background-white: #fff; /* White background for containers */
+  --font-size-base: 16px; /* Base font size for rem calculation */
+  --font-size-small: 14px; /* Base font size for rem calculation */
+  --border-color: #ccc; /* Border color */
+  --border-radius-medium: 0.5rem; /* Medium border radius */
+  --border-radius-small: 0.25rem; /* Small border radius */
+  --box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1); /* Box shadow */
+  --button-bg: #4169e1; /* Button background color */
+  --button-bg-hover: #214ed3; /* Button hover background color */
+  --container-width: 500px; /* Container width */
+  --font-primary: 'Lato', sans-serif; /* Primary font */
+  --font-size-medium: 1.25rem; /* Medium font size */
+  --output-bg: #f5f5f5; /* Background for output */
+}
+
+/* Import Lato font */
+@font-face {
+  font-family: 'Lato';
+  src: url('../assets/fonts/Lato-Regular.ttf') format('ttf');
+  font-weight: 400; /* Regular weight */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: url('../assets/fonts/Lato-Bold.ttf') format('ttf');
+  font-weight: 700; /* Bold weight */
+  font-style: normal;
+}
+
+/* General Styles */
+body {
+  align-items: center;
+  background-color: var(--background);
+  display: flex;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-base);
+  height: 100vh;
+  justify-content: center;
+  margin: 0;
+  color: var(--text-primary);
+}
+
+h1 {
+  font-size: var(--font-size-medium);
+  margin: 0;
+}
+
+button {
+  background-color: var(--button-bg);
+  border-radius: var(--border-radius-small);
+  border: none;
+  color: var(--text-button);
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: var(--button-bg-hover);
+}
+
+/* Container */
+.container {
+  background: var(--background-white);
+  padding: 1rem;
+  border-radius: var(--border-radius-medium);
+  box-shadow: var(--box-shadow);
+  text-align: center;
+  width: var(--container-width);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Controls */
+.controls {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.row {
+  align-items: center;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  width: 100%;
+}
+
+.controls input,
+.controls select,
+.controls button {
+  border-radius: var(--border-radius-small);
+  padding: 0.5rem;
+}
+
+.row > div {
+  flex: 1;
+}
+
+.controls button {
+  display: block;
+  width: 100%;
+}
+
+#copy-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+#copy-button svg {
+  height: 1rem;
+  width: 1rem;
+}
+
+label,
+input,
+select {
+  display: block;
+  width: 100%;
+}
+
+label {
+  font-size: var(--font-size-small);
+  text-align: left;
+}
+
+.controls > div {
+  width: 100%;
+}

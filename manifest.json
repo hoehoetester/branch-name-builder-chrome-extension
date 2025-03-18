@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "Branch Name Builder",
+  "version": "1.0.0",
+  "description": "Extracts Jira ticket details and generates a branch name.",
+  "author": "Hoehoe Tester",
+  "permissions": ["activeTab", "scripting", "clipboardWrite"],
+  "host_permissions": ["https://*.atlassian.net/*"], 
+  "action": {
+    "default_popup": "index.html",
+    "default_title": "Branch Name Builder"
+  },
+  "icons": {
+      "16": "assets/icons/icon-16x16.png",
+      "48": "assets/icons/icon-48x48.png",
+      "128": "assets/icons/icon-128x128.png"
+  }
+}
