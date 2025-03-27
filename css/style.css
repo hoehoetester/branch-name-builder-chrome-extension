@@ -69,6 +69,18 @@ button:hover {
   background-color: var(--button-bg-hover);
 }
 
+label,
+input,
+select {
+  display: block;
+  width: 100%;
+}
+
+label {
+  font-size: var(--font-size-small);
+  text-align: left;
+}
+
 /* Container */
 .container {
   background: var(--background-white);
@@ -80,6 +92,22 @@ button:hover {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+}
+
+.header {
+  position: relative;
+}
+
+#close-button {
+  align-items: center;
+  border-radius: 999px;
+  display: flex;
+  height: 2rem;
+  justify-content: center;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 2rem;
 }
 
 /* Controls */
@@ -115,6 +143,7 @@ button:hover {
   width: 100%;
 }
 
+#copy-commit-message-button,
 #copy-button {
   display: flex;
   align-items: center;
@@ -122,21 +151,10 @@ button:hover {
   gap: 0.5rem;
 }
 
+#copy-commit-message-button svg,
 #copy-button svg {
   height: 1rem;
   width: 1rem;
-}
-
-label,
-input,
-select {
-  display: block;
-  width: 100%;
-}
-
-label {
-  font-size: var(--font-size-small);
-  text-align: left;
 }
 
 .controls > div {

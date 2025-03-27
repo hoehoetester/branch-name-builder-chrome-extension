@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   document.getElementById('ticketTitle').value = result.ticketTitle;
 
   updateBranchName();
+  updateCommitMessage();
 });
 
 // Extract ticket number and title from Jira's DOM
@@ -49,13 +50,30 @@ function updateBranchName() {
   }
 }
 
+function updateCommitMessage() {
+  const ticketNumber = document.getElementById('ticketNumber').value.trim();
+  const ticketTitle = document.getElementById('ticketTitle').value.trim();
+  const branchNameField = document.getElementById('commitMessage');
+
+  if (ticketNumber && ticketTitle) {
+    branchNameField.value = `[${ticketNumber}] ${ticketTitle}`;
+  } else {
+    branchNameField.value = '';
+  }
+}
+
 // Copy the branch name to clipboard
-function copyToClipboard() {
-  const branchName = document.getElementById('branchName').value;
-  const copyButtonText = document.getElementById('copy-button-text');
+function copyToClipboard(copyTextType) {
+  const textToCopy = document.getElementById(copyTextType).value;
+
+  const targetButton =
+    copyTextType === 'branchName'
+      ? 'copy-button-text'
+      : 'copy-commit-message-button-text';
+  const copyButtonText = document.getElementById(targetButton);
 
   navigator.clipboard
-    .writeText(branchName)
+    .writeText(textToCopy)
     .then(() => {
       copyButtonText.innerText = 'Copied!';
       setTimeout(() => (copyButtonText.innerText = 'Copy'), 1500);
@@ -65,9 +83,20 @@ function copyToClipboard() {
 
 document
   .getElementById('copy-button')
-  .addEventListener('click', copyToClipboard);
+  .addEventListener('click', () => copyToClipboard('branchName'));
+
+document
+  .getElementById('copy-commit-message-button')
+  .addEventListener('click', () => copyToClipboard('commitMessage'));
 
 // Attach event listeners for real-time updates
 ['ticketType', 'ticketNumber', 'ticketTitle'].forEach((id) =>
-  document.getElementById(id).addEventListener('input', updateBranchName)
+  document.getElementById(id).addEventListener('input', () => {
+    updateBranchName();
+    updateCommitMessage();
+  })
 );
+
+document.getElementById('close-button').addEventListener('click', () => {
+  window.close(); // This closes the popup
+});
