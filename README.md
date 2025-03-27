@@ -1,3 +1,3 @@
 # branch-name-builder-chrome-extension
 
-![image](https://github.com/user-attachments/assets/85a734d2-ba0d-4b04-8c38-78b14389d5b0)
+![Image](https://github.com/user-attachments/assets/d338d306-2e82-4b26-a742-234f44fcd6ee)
