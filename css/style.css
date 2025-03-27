@@ -10,8 +10,6 @@
   /* Base Styling */
   --background: #f4f4f4; /* Background color for body */
   --background-white: #fff; /* White background for containers */
-  --font-size-base: 16px; /* Base font size for rem calculation */
-  --font-size-small: 14px; /* Base font size for rem calculation */
   --border-color: #ccc; /* Border color */
   --border-radius-medium: 0.5rem; /* Medium border radius */
   --border-radius-small: 0.25rem; /* Small border radius */
@@ -20,36 +18,38 @@
   --button-bg-hover: #214ed3; /* Button hover background color */
   --container-width: 500px; /* Container width */
   --font-primary: 'Lato', sans-serif; /* Primary font */
+  --font-size-base: 16px; /* Base font size for rem calculation */
   --font-size-medium: 1.25rem; /* Medium font size */
+  --font-size-small: 14px; /* Base font size for rem calculation */
   --output-bg: #f5f5f5; /* Background for output */
 }
 
 /* Import Lato font */
 @font-face {
   font-family: 'Lato';
-  src: url('../assets/fonts/Lato-Regular.ttf') format('ttf');
-  font-weight: 400; /* Regular weight */
   font-style: normal;
+  font-weight: 400; /* Regular weight */
+  src: url('../assets/fonts/Lato-Regular.ttf') format('ttf');
 }
 
 @font-face {
   font-family: 'Lato';
-  src: url('../assets/fonts/Lato-Bold.ttf') format('ttf');
-  font-weight: 700; /* Bold weight */
   font-style: normal;
+  font-weight: 700; /* Bold weight */
+  src: url('../assets/fonts/Lato-Bold.ttf') format('ttf');
 }
 
-/* General Styles */
+/* Base Styles */
 body {
   align-items: center;
   background-color: var(--background);
+  color: var(--text-primary);
   display: flex;
   font-family: var(--font-primary);
   font-size: var(--font-size-base);
   height: 100vh;
   justify-content: center;
   margin: 0;
-  color: var(--text-primary);
 }
 
 h1 {
@@ -57,60 +57,89 @@ h1 {
   margin: 0;
 }
 
-button {
-  background-color: var(--button-bg);
-  border-radius: var(--border-radius-small);
+/* Button Styles */
+.btn {
   border: none;
+  border-radius: var(--border-radius-small);
   color: var(--text-button);
   cursor: pointer;
+  padding: 0.5rem;
 }
 
-button:hover {
+.btn:hover {
   background-color: var(--button-bg-hover);
 }
 
-label,
-input,
-select {
-  display: block;
+.btn-primary {
+  background-color: var(--button-bg);
   width: 100%;
 }
 
-label {
-  font-size: var(--font-size-small);
-  text-align: left;
+.btn-icon {
+  align-items: center;
+  border-radius: 999px;
+  display: flex;
+  height: 2rem;
+  justify-content: center;
+  width: 2rem;
 }
 
-/* Container */
+.btn-close {
+  background-color: var(--button-bg);
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.btn-with-icon {
+  align-items: center;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.btn-icon svg {
+  height: 1rem;
+  width: 1rem;
+}
+
+/* Form Styles */
+.form-group {
+  width: 100%;
+}
+
+.form-group label {
+  display: block;
+  font-size: var(--font-size-small);
+  text-align: left;
+  width: 100%;
+}
+
+.form-input,
+.form-select {
+  border-radius: var(--border-radius-small);
+  display: block;
+  padding: 0.5rem;
+  width: 100%;
+}
+
+/* Layout Components */
 .container {
   background: var(--background-white);
-  padding: 1rem;
   border-radius: var(--border-radius-medium);
   box-shadow: var(--box-shadow);
-  text-align: center;
-  width: var(--container-width);
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  padding: 1rem;
+  text-align: center;
+  width: var(--container-width);
 }
 
 .header {
   position: relative;
 }
 
-#close-button {
-  align-items: center;
-  border-radius: 999px;
-  display: flex;
-  height: 2rem;
-  justify-content: center;
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 2rem;
-}
-
-/* Controls */
 .controls {
   align-items: center;
   display: flex;
@@ -127,36 +156,6 @@ label {
   width: 100%;
 }
 
-.controls input,
-.controls select,
-.controls button {
-  border-radius: var(--border-radius-small);
-  padding: 0.5rem;
-}
-
-.row > div {
+.row > .form-group {
   flex: 1;
-}
-
-.controls button {
-  display: block;
-  width: 100%;
-}
-
-#copy-commit-message-button,
-#copy-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-}
-
-#copy-commit-message-button svg,
-#copy-button svg {
-  height: 1rem;
-  width: 1rem;
-}
-
-.controls > div {
-  width: 100%;
 }
