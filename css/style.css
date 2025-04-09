@@ -22,6 +22,14 @@
   --font-size-medium: 1.25rem; /* Medium font size */
   --font-size-small: 14px; /* Base font size for rem calculation */
   --output-bg: #f5f5f5; /* Background for output */
+
+  /* Ticket Type Colors */
+  --ticket-type-feature: #32cd32;
+  --ticket-type-bugfix: #ff6347;
+  --ticket-type-task: #87cefa;
+  --ticket-type-test: #ffa500;
+  --ticket-type-experiment: #20b2aa;
+  --ticket-type-hotfix: #9370db;
 }
 
 /* Import Lato font */
@@ -158,4 +166,28 @@ h1 {
 
 .row > .form-group {
   flex: 1;
+}
+
+.form-select:has(> option[value='feature']:checked) {
+  background-color: var(--ticket-type-feature);
+}
+
+.form-select:has(> option[value='bugfix']:checked) {
+  background-color: var(--ticket-type-bugfix);
+}
+
+.form-select:has(> option[value='task']:checked) {
+  background-color: var(--ticket-type-task);
+}
+
+.form-select:has(> option[value='test']:checked) {
+  background-color: var(--ticket-type-test);
+}
+
+.form-select:has(> option[value='experiment']:checked) {
+  background-color: var(--ticket-type-experiment);
+}
+
+.form-select:has(> option[value='hotfix']:checked) {
+  background-color: var(--ticket-type-hotfix);
 }
