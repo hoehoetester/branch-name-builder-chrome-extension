@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   document.getElementById('ticketNumber').value = result.ticketNumber;
   document.getElementById('ticketTitle').value = result.ticketTitle;
+  document.getElementById('ticketType').value = result.ticketType;
 
   updateBranchName();
   updateCommitMessage();
@@ -23,9 +24,34 @@ function getTicketData() {
     '[data-testid="issue.views.issue-base.foundation.summary.heading"]'
   );
 
+  const ticketTypeElement = document.querySelector(
+    '[data-testid="issue.views.issue-base.foundation.change-issue-type.button"]'
+  );
+
+  const ticketTypeButtonLabel = ticketTypeElement?.ariaLabel || '';
+  const ticketTypeValue = (() => {
+    switch (true) {
+      case /feature/i.test(ticketTypeButtonLabel):
+        return 'feature';
+      case /bug/i.test(ticketTypeButtonLabel):
+        return 'bugfix';
+      case /task/i.test(ticketTypeButtonLabel):
+        return 'task';
+      case /test/i.test(ticketTypeButtonLabel):
+        return 'test';
+      case /experiment/i.test(ticketTypeButtonLabel):
+        return 'experiment';
+      case /hotfix/i.test(ticketTypeButtonLabel):
+        return 'hotfix';
+      default:
+        return '';
+    }
+  })();
+
   return {
     ticketNumber: ticketNumberElement?.innerText.trim() || '',
     ticketTitle: ticketTitleElement?.innerText.trim() || '',
+    ticketType: ticketTypeValue,
   };
 }
 
